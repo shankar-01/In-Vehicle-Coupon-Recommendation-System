@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>In Vehicle Coupon Recommendation</title>
+    <style>
+      select{
+        width: 100px;
+      }
+      body{
+        background-image: url("https://miro.medium.com/max/700/0*VquvEkwOj_e17vw6.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>In Vehicle Coupon Recommendation Prediction</h1>
+    <form action="/result" method="POST">
+    <table>
+      <tr>
+        <td>
+        <h2>User Attribute</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>
+          <select name="gender_male">
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+          </select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Education</td>
+        <td>
+          <select name="education">
+            <option value="_Some college - no degree">Some college - no degree</option>
+            <option value="_Associates degree">Associates degree</option>
+            <option value="_High School Graduate">High School Graduate</option>
+            <option value="_Graduate degree (Masters or Doctorate)">Graduate degree (Masters or Doctorate)</option>
+            <option value="_Bachelors degree">Bachelors degree</option>
+            <option value="_Some High School">Some High School</option>
+          </select>
+        </td>
+      </tr>
+        <td>Times respective coupon accepted</td>
+        <td>
+          <select name="coupon_freq">
+            <option value="_never">never</option>
+            <option value="_less1">Less than 1</option>
+            <option value="1~3">1 to 3</option>
+            <option value="_4~8">4 to 8</option>
+            <option value="gt8">greater than 8</option>
+          </select>
+        </td>
+      </tr>
+    
+
+    <tr>
+      <td>
+      <h2>Contextual Attribute</h2>
+    </td>
+    </tr>
+      <tr>
+        <td>Destination</td>
+        <td>
+          <select name="destination">
+            <option value="_No Urgent Place">No Urgent Place</option>
+            <option value="_Home">Home</option>
+            <option value="_Work">Work</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Sunny Weather</td>
+        <td><select name="weather">
+            <option value="_Sunny">Sunny</option>
+            <option value="_Snowy">Snowy</option>
+            <option value="_Rainy">Rainy</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>Time</td>
+        <td>
+          <select name="time">
+            <option value="1">1 AM</option>
+            <option value="2">2 AM</option>
+            <option value="3">3 AM</option>
+            <option value="4">4 AM</option>
+            <option value="5">5 AM</option>
+            <option value="6">6 AM</option>
+            <option value="_7AM">7 AM</option>
+            <option value="8">8 AM</option>
+            <option value="9">9 AM</option>
+            <option value="_10AM">10 AM</option>
+            <option value="11">11 AM</option>
+            <option value="12">12 AM</option>
+            <option value="1">1 PM</option>
+            <option value="_2PM">2 PM</option>
+            <option value="3">3 PM</option>
+            <option value="4">4 PM</option>
+            <option value="5">5 PM</option>
+            <option value="_6PM">6 PM</option>
+            <option value="7">7 PM</option>
+            <option value="8">8 PM</option>
+            <option value="9">9 PM</option>
+            <option value="_10PM">10 PM</option>
+            <option value="11">11 PM</option>
+            <option value="12">12 PM</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Passenger</td>
+        <td>
+          <select name="passanger">
+            <option value="-Friend(s)">Friend(s)</option>
+            <option value="_Kid(s)">kids</option>
+            <option value="_Partner">Partner</option>
+            <option value="_Alone">Alone</option>
+          </select>
+        </td>
+      </tr>
+    
+
+    <tr>
+      <td>
+      <h2>Coupon Attribute</h2>
+    </td>
+    </tr>
+      <tr>
+        <td>Is direction same?</td>
+        <td><input type="checkbox"  name="direction_same" value="1"></td>
+      </tr>
+      <tr>
+        <td>Coupon</td>
+        <td>
+          <select  name="coupon">
+            <option value="_Coffee House" >Coffee House</option>
+            <option value="_Restaurant(20)">Resturant less than 20$</option>
+            <option value="_Carry out & Take away">Carry out & Take away</option>
+            <option value="_Restaurant(20,50)">Resturant 20$ to 50$ </option>
+            <option value="_Bar">Bar</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Expiration</td>
+        <td>
+          <select  name="expiration_2h">
+            <option value="1">2 hour</option>
+            <option value="0">1 day</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <button type="submit">Submit</button>
+    </form>
+
+    {{prediction}}
+  </body>
+</html>
