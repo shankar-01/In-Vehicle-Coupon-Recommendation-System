@@ -1,8 +1,7 @@
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_file
 import joblib
 import numpy as np
-
 app = Flask(__name__)
 # prediction function
 def Predict(to_predict_list):
@@ -132,6 +131,12 @@ def convertData(dict):
 @app.route('/')
 def home():
 	return render_template("index.html")
+@app.route('/projectdetails')
+def projectdetails():
+	return render_template("projectdetails.html")
+@app.route('/downloadReport')
+def downloadReport():
+	return send_file('report.pdf')
 @app.route('/result', methods = ['POST'])
 def result():
 	if request.method == 'POST':
@@ -142,9 +147,11 @@ def result():
 		inputV = list(map(int, convertData(to_predict_list)))
 		result = Predict(inputV)
 		print(inputV)
-		if int(result)== 1:
-			prediction ='Accept coupon'
-		else:
-			prediction ='Not Accept Coupon'
 		
-		return render_template("index.html",prediction= prediction )
+
+		if int(result)== 1:
+			prediction ='accept the coupon'
+		else:
+			prediction ='not accept the coupon'
+		
+		return jsonify(alert=prediction)
